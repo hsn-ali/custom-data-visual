@@ -1,0 +1,72 @@
+<div class="toolbar-data-visual" *ngIf="toolBarConfig.display">
+  <span class="toolbar-icon-data-visual" matTooltip="Show" *ngIf="!showToolBar"><i class="fas fa-angle-left" (click)="showToolBar=true;"></i></span>
+  <div *ngIf="showToolBar" @enterAnimation>
+    <span class="toolbar-icon-data-visual" matTooltip="Hide"><i
+      class="fas fa-angle-right" *ngIf="showToolBar"
+      (click)="showToolBar=false;"></i></span>
+    <ng-container>
+    <span class="toolbar-icon-data-visual" matTooltip="Graph" *ngIf="list" (click)="list=false;chart=true;"><i
+      class="far fa-chart-bar"></i></span>
+    </ng-container>
+    <ng-container *ngIf="toolBarConfig.showList">
+    <span class="toolbar-icon-data-visual" matTooltip="Table" *ngIf="chart" (click)="list=true;chart=false;"><i
+      class="fas fa-list"></i></span>
+    </ng-container>
+    <ng-container *ngIf="toolBarConfig.showExcel">
+    <span class="toolbar-icon-data-visual" matTooltip="Excel" *ngIf="list" (click)="downloadExcel()"><i
+      class="fas fa-file-excel"></i></span>
+    </ng-container>
+    <ng-container *ngIf="toolBarConfig.showPdf">
+      <span class="toolbar-icon-data-visual" matTooltip="Pdf" *ngIf="chart"><i class="fas fa-file-pdf"></i></span>
+    </ng-container>
+    <ng-container *ngIf="toolBarConfig.showRawExcel">
+    <span class="toolbar-icon-data-visual" matTooltip="Raw Data" *ngIf="chart && chartData?.chartId === 'avlChart'"
+          (click)="downloadExcel('raw')"><i class="fas fa-file-excel-o"></i></span>
+    </ng-container>
+    <ng-container *ngIf="toolBarConfig.showModal">
+    <span class="toolbar-icon-data-visual" matTooltip="Expand" (click)="openChartDialog()"><i
+      class="fas fa-expand-arrows-alt"></i></span>
+    </ng-container>
+  </div>
+</div>
+
+<div *ngIf="dataInjected">
+  <ngx-flip [flip]="chart">
+    <div front *ngIf="chartData && chartData?.datasets">
+      <div [style.height.px]="cHeight">
+        <p-chart [id]="cId" [type]="cType" [data]="chartData"
+                 [height]="cHeight" [options]="cOption"
+                 (onDataSelect)="selectData($event)"></p-chart>
+      </div>
+    </div>
+    <div back>
+      <div class="custom-list">
+        <div class="row margin-t-10 margin-b-30">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="full-table-width common-block">
+              <div class="table-responsive scrollbar scrollbar-primary pl-1" [style.height.px]="cHeight">
+                <table class="table">
+                  <thead>
+                  <tr class="row">
+                    <th class="col" style="font-weight: bold;color: #4a4a8a;"
+                        *ngFor="let head of tableHeader">
+                      {{head.header}}
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody class="">
+                  <tr *ngFor="let list of tableData let i = index" class="row generic-tr">
+                    <td class="col" *ngFor="let item of tableHeader">
+                      {{list[item.field]}}
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ngx-flip>
+</div>

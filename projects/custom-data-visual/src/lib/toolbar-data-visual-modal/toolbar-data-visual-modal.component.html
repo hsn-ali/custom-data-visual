@@ -1,0 +1,36 @@
+<p-chart *ngIf="data.graph" [type]="data?.dataInjected?.cType" [data]="data?.dataInjected?.chartData"
+         height="600" [options]="data?.dataInjected?.cOption"></p-chart>
+
+
+<div class="custom-list" *ngIf="!data.graph">
+  <div class="row margin-t-10 margin-b-30">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="full-table-width common-block">
+        <div class="table-responsive expandedHeight scrollbar-primary pl-1">
+          <table class="table">
+            <thead>
+            <tr class="row">
+              <th class="col" style="font-weight: bold;color: #4a4a8a;"
+                  *ngFor="let head of data?.dataInjected?.tableHeader">
+                {{head.header}}
+              </th>
+            </tr>
+            </thead>
+            <tbody class="">
+            <tr *ngFor="let list of data?.dataInjected?.tableData let i = index" class="row generic-tr">
+              <td class="col" *ngFor="let item of data?.dataInjected?.tableHeader">
+                {{list[item.field]}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pull-right margin-t-10" style="margin-right: 60px !important;" mat-dialog-actions>
+  <button class="btn save-button" (click)="close()">
+    Close
+  </button>
+</div>

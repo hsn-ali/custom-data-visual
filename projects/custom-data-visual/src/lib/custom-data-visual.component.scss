@@ -1,0 +1,68 @@
+.toolbar-data-visual {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  margin-top: 0;
+}
+
+::ng-deep .Dialog-Custom-Class {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100%;
+  pointer-events: auto !important;
+  position: static !important;
+  margin-left: 0;
+  margin-top: 0;
+}
+
+.toolbar-icon-data-visual {
+  justify-content: flex-end;
+  cursor: pointer;
+  color: #4a4a8a;
+  padding: 0 5px;
+}
+
+.charts-card{
+  padding: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 2px 0 rgba(156, 156, 156, 0.18) !important;
+  border-radius: 0;
+  display: block;
+  height: 350px;
+  border: none;
+}
+
+.scrollbar {
+  display: block;
+  background: #70798100;
+  overflow-y: scroll;
+  word-break: break-all;
+
+  thead {
+    tr {
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      background: #f9f9f9;
+    }
+  }
+
+  .generic-tr:hover {
+    background-color: #ffffff !important;
+    box-shadow: 0 4px 8px -10px rgba(156, 39, 176, 0.28), 0 4px 11px 0px rgba(0, 0, 0, 0.12), 0 2px 3px -3px rgba(156, 39, 176, 0.2) !important;
+    -webkit-transition: ease-in-out 100ms;
+    transition: ease-in-out 100ms;
+    cursor: pointer;
+  }
+
+  th {
+    border: none;
+  }
+
+  td {
+    border: none;
+  }
+}

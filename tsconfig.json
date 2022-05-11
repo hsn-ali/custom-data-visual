@@ -3,6 +3,12 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "custom-data-visual": [
+        "dist/custom-data-visual/custom-data-visual",
+        "dist/custom-data-visual"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -25,6 +31,8 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "enableIvy": false,
+    "strictTemplates": true,
+    "disableTypeScriptVersionCheck": true
   }
 }
