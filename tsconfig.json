@@ -7,6 +7,10 @@
       "custom-data-visual": [
         "dist/custom-data-visual/custom-data-visual",
         "dist/custom-data-visual"
+      ],
+      "util-service": [
+        "dist/util-service/util-service",
+        "dist/util-service"
       ]
     },
     "outDir": "./dist/out-tsc",

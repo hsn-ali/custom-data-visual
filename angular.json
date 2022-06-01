@@ -141,6 +141,37 @@
           }
         }
       }
+    },
+    "util-service": {
+      "projectType": "library",
+      "root": "projects/util-service",
+      "sourceRoot": "projects/util-service/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/util-service/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/util-service/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/util-service/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/util-service/src/test.ts",
+            "tsConfig": "projects/util-service/tsconfig.spec.json",
+            "karmaConfig": "projects/util-service/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "libraries"
