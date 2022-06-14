@@ -10,7 +10,7 @@ export class ToolbarDataVisualModalComponent implements OnInit {
 
   constructor(private dialogRef: MatDialogRef<ToolbarDataVisualModalComponent>, @Optional() @Inject(MAT_DIALOG_DATA) public data: any) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {console.log(this.data);
   }
 
   close() {

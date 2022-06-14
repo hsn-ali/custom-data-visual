@@ -75,82 +75,17 @@ export class AppComponent {
         }
         ]
     };*/
-    this.data = {
-      "nurTrend": [{"labele": "May 2019", "target": 99.24, "achievment": 99.09}, {
-        "labele": "June 2019",
-        "target": 99.24,
-        "achievment": 99.06
-      }, {"labele": "July 2019", "target": 99.24, "achievment": 99.24}, {
-        "labele": "August 2019",
-        "target": 99.24,
-        "achievment": 99.37
-      }, {"labele": "September 2019", "target": 99.24, "achievment": 99.53}, {
-        "labele": "October 2019",
-        "target": 99.24,
-        "achievment": 99.18
-      }, {"labele": "November 2019", "target": 99.24, "achievment": 99.59}, {
-        "labele": "December 2019",
-        "target": 99.24,
-        "achievment": 99.62
-      }, {"labele": "January 2020", "target": 99.24, "achievment": 99.50}, {
-        "labele": "February 2020",
-        "target": 99.24,
-        "achievment": 99.24
-      }, {"labele": "March 2020", "target": 99.24, "achievment": 99.11}, {
-        "labele": "April 2020",
-        "target": 99.24,
-        "achievment": 98.83
-      }, {"labele": "May 2020", "target": 99.24, "achievment": 99.62}, {
-        "labele": "June 2020",
-        "target": 99.24,
-        "achievment": 99.55
-      }, {"labele": "July 2020", "target": 99.24, "achievment": 99.43}, {
-        "labele": "August 2020",
-        "target": 99.90,
-        "achievment": 99.55
-      }, {"labele": "September 2020", "target": 99.90, "achievment": 99.59}, {
-        "labele": "October 2020",
-        "target": 99.90,
-        "achievment": 99.70
-      }, {"labele": "November 2020", "target": 99.90, "achievment": 99.79}, {
-        "labele": "December 2020",
-        "target": 99.90,
-        "achievment": 99.79
-      }, {"labele": "January 2021", "target": 99.90, "achievment": 99.90}, {
-        "labele": "February 2021",
-        "target": 99.90,
-        "achievment": 99.90
-      }, {"labele": "March 2021", "target": 99.90, "achievment": 99.90}, {
-        "labele": "April 2021",
-        "target": 99.90,
-        "achievment": 99.89
-      }, {"labele": "May 2021", "target": 99.90, "achievment": 99.93}, {
-        "labele": "June 2021",
-        "target": 99.90,
-        "achievment": 99.90
-      }, {"labele": "July 2021", "target": 99.90, "achievment": 99.90}, {
-        "labele": "August 2021",
-        "target": 99.90,
-        "achievment": 99.93
-      }, {"labele": "September 2021", "target": 99.90, "achievment": 99.95}, {
-        "labele": "October 2021",
-        "target": 99.90,
-        "achievment": 99.93
-      }, {"labele": "November 2021", "target": 99.90, "achievment": 99.93}],
-      "nurData": {
-        "xAxisTitle": null,
-        "yAxisTitle": null,
-        "title": "Total NUR: 73.00  Reconciled NUR: 68.00",
-        "showLegend": true,
-        "chartDataSet": [{
-          "bgColor": "#42a5f5",
-          "legendTitle": "NUR Data",
-          "chartData": [{"label": "Bangui", "value": "12.00"}, {"label": "West", "value": "26.00"}, {
-            "label": "East",
-            "value": "35.00"
-          }]
-        }]
-      }
+    this.data = {"nurData":
+        {"xAxisTitle":null,"yAxisTitle":null,"title":"NUR Trends Data","showLegend":true,"chartDataSet":[
+          {"bgColor":"#42a5f5","legendTitle":"NUR Data","chartData":[
+            {"label":"April 2022","value":"221.0"},{"label":"May 2022","value":"1342.0"},{"label":"June 2022","value":"2704.0"}
+            ]
+          }, {"bgColor":"#f54242","legendTitle":"Targetted NUR","chartData":[
+            {"label":"April 2022","value":"1400.0"},{"label":"May 2022","value":"1400.0"},{"label":"June 2022","value":"1400.0"}
+            ]
+          }
+          ]
+        }
     };
     this.injection = {
       chartData: {
@@ -298,22 +233,7 @@ export class AppComponent {
     };
 
     visualService.listenVisualNotification().subscribe(visualData => {
-      const array = [];
-      for (let i = 0; i < this.data.chartDataSet.length; i++) {
-        if (i === 0) {
-          array.push({
-            field: 'key' + i, header: this.data.xAxisTitle
-          });
-          array.push({
-            field: 'key' + (i + 1), header: this.data.chartDataSet[i].legendTitle
-          });
-        } else {
-          array.push({
-            field: 'key' + (i + 1), header: this.data.chartDataSet[i].legendTitle
-          });
-        }
-      }
-      console.log(array);
+      console.log(visualData)
     });
   }
 }

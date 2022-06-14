@@ -12,6 +12,7 @@ export interface IDataToVisualize {
 export interface IChartDataSet {
   bgColor: string;
   legendTitle: string;
+  fill: boolean;
   chartData: IChartData[]
 }
 
@@ -164,7 +165,7 @@ export class CustomDataVisualComponent implements OnInit {
   }
 
   openChartDialog() {
-    if (!this.list) {
+    if (this.list) {
       this.dialog.open(ToolbarDataVisualModalComponent, {
         panelClass: 'Dialog-Custom-Class',
         data: {
@@ -225,6 +226,7 @@ export class CustomDataVisualComponent implements OnInit {
           {
             label: dataSet.legendTitle,
             backgroundColor: dataSet.bgColor,
+            fill: dataSet.fill?.toString() ? dataSet.fill : false,
             data: values
           });
         values = [];
@@ -236,6 +238,8 @@ export class CustomDataVisualComponent implements OnInit {
   }
 
   setTabularData() {
+    this.tableHeader = [];
+    this.tableData = [];
     let dump = '{';
     let indexed = 0;
     const label: string[] = [];
